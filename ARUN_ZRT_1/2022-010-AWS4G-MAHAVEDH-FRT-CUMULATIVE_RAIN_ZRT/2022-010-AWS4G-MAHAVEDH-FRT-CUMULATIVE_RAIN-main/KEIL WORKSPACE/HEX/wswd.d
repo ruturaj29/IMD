@@ -1,0 +1,14 @@
+.\HEX\wswd.o: ..\DRIVERS\source\WSWD.c
+.\HEX\wswd.o: C:\Keil\ARM\RV31\INC\string.h
+.\HEX\wswd.o: C:\Keil\ARM\RV31\INC\math.h
+.\HEX\wswd.o: ..\DRIVERS\inlcude\stdutils.h
+.\HEX\wswd.o: C:\Keil\ARM\RV31\INC\stdint.h
+.\HEX\wswd.o: ..\DRIVERS\inlcude\WSWD.h
+.\HEX\wswd.o: ..\DRIVERS\inlcude\delay.h
+.\HEX\wswd.o: ..\DRIVERS\inlcude\lcd.h
+.\HEX\wswd.o: ..\DRIVERS\inlcude\gpio.h
+.\HEX\wswd.o: ..\DRIVERS\inlcude\uart.h
+.\HEX\wswd.o: C:\Keil\ARM\INC\NXP\LPC17xx\lpc17xx.h
+.\HEX\wswd.o: C:\Keil\ARM\RV31\INC\core_cm3.h
+.\HEX\wswd.o: C:\Keil\ARM\INC\NXP\LPC17xx\system_LPC17xx.h
+.\HEX\wswd.o: ..\DRIVERS\inlcude\convert.h
