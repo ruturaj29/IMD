@@ -1,0 +1,10 @@
+.\HEX\spi.o: ..\DRIVERS\source\spi.c
+.\HEX\spi.o: C:\Keil\ARM\INC\NXP\LPC17xx\lpc17xx.h
+.\HEX\spi.o: C:\Keil\ARM\RV31\INC\core_cm3.h
+.\HEX\spi.o: C:\Keil\ARM\RV31\INC\stdint.h
+.\HEX\spi.o: C:\Keil\ARM\INC\NXP\LPC17xx\system_LPC17xx.h
+.\HEX\spi.o: ..\DRIVERS\inlcude\spi.h
+.\HEX\spi.o: ..\DRIVERS\inlcude\stdutils.h
+.\HEX\spi.o: ..\DRIVERS\inlcude\gpio.h
+.\HEX\spi.o: ..\DRIVERS\inlcude\lpc17xx_clkpwr.h
+.\HEX\spi.o: ..\DRIVERS\inlcude\uart.h

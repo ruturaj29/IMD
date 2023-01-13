@@ -1,0 +1,12 @@
+.\HEX\adc.o: ..\DRIVERS\source\adc.c
+.\HEX\adc.o: ..\DRIVERS\inlcude\adc.h
+.\HEX\adc.o: C:\Keil\ARM\INC\NXP\LPC17xx\lpc17xx.h
+.\HEX\adc.o: C:\Keil\ARM\RV31\INC\core_cm3.h
+.\HEX\adc.o: C:\Keil\ARM\RV31\INC\stdint.h
+.\HEX\adc.o: C:\Keil\ARM\INC\NXP\LPC17xx\system_LPC17xx.h
+.\HEX\adc.o: ..\DRIVERS\inlcude\delay.h
+.\HEX\adc.o: ..\DRIVERS\inlcude\stdutils.h
+.\HEX\adc.o: ..\DRIVERS\inlcude\gpio.h
+.\HEX\adc.o: ..\DRIVERS\inlcude\uart.h
+.\HEX\adc.o: ..\DRIVERS\inlcude\convert.h
+.\HEX\adc.o: ..\DRIVERS\inlcude\lcd.h
