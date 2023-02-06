@@ -107,7 +107,7 @@ void Configure_GPIO_Peripherals ( void )
 void Initialize_ALL_Peripherals ( void )
 {
 	/* Initialize all peripherals */
-	WDT_Init(WDT_CLKSRC_IRC, WDT_MODE_RESET);	/* Initialize WDT, IRC OSC, Reset mode */
+	WDT_Init(WDT_CLKSRC_IRC, WDT_MODE_INT_ONLY);	/* Initialize WDT, IRC OSC, Reset mode */
 	
 	WDT_Start(WDT_TIMEOUT);	/* Start watchdog with given timeout */ 
 	
@@ -156,14 +156,14 @@ int main ()
 	SystemInit();	/* Clock and PLL configuration */
 	 
 	/* If BOD was detected set flag to 1*/
-	if ((LPC_SC->RSID & 0x9) == 0x8) {
-		LPC_SC->RSID |= 0x8;	// check Flag for BOD
-		brownOutReset = 1;		// Error writing to a Err log 
-	}
-	else
-		brownOutReset = 0;		// BOD reset not happend
-	
-	/* Read back TimeOut flag to determine previous timeout reset */
+//	if ((LPC_SC->RSID & 0x9) == 0x8) {
+//		LPC_SC->RSID |= 0x8;	// check Flag for BOD
+//		brownOutReset = 1;		// Error writing to a Err log 
+//	}
+//	else
+//		brownOutReset = 0;		// BOD reset not happend
+//	
+//	/* Read back TimeOut flag to determine previous timeout reset */
 	if (WDT_ReadTimeOutFlag()) {
 		WDT_ClrTimeOutFlag(); // Clear WDT TimeOut
 		watchDogReset = 1;		// Error writing to a Err log
@@ -404,18 +404,19 @@ int main ()
 /**************************************************************************************************/
 	rtc_2call();  	//* Reset RTC register when bettery low flag set ,function used to check reset of rtc register when battery flag set and also reset rain . */
 	ShutDownModule();	
+	WDT_Feed();
 		while(1)
 	{
-	
+		 WDT_UpdateTimeOut(WDT_TIMEOUT);
 		 Read_WindSensor();	
 		 DELAY_ms(200);
 
-		 if (!Minute_WINDSENSOR_COUNTS)
-			{
-				strcpy(_LCDCurrentWindDirection,"NA");	
-				strcpy(_LCDCurrentSpeed,"NA");			
-			}
-				Minute_WINDSENSOR_COUNTS = 0;
+		 //if (!Minute_WINDSENSOR_COUNTS)
+		//	{
+		//		strcpy(_LCDCurrentWindDirection,"NA");	
+		//		strcpy(_LCDCurrentSpeed,"NA");			
+		//	}
+		//		Minute_WINDSENSOR_COUNTS = 0;
 
 				LCD_Clear();
 				LCD_GoToLine(0);LCD_Printf("Wdir(deg): %s",_LCDCurrentWindDirection);

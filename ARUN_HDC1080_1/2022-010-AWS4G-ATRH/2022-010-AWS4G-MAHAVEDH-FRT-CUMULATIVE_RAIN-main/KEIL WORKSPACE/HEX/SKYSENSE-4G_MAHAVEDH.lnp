@@ -1,0 +1,4 @@
+--device DARMP1 ".\hex\startup_lpc17xx.o" ".\hex\system_lpc17xx.o" ".\hex\core_cm3.o" ".\hex\adc.o" ".\hex\convert.o" ".\hex\delay.o" ".\hex\extintr.o" ".\hex\gpio.o" ".\hex\gprs.o" ".\hex\lcd.o" ".\hex\lpc17xx_clkpwr.o" ".\hex\lpc17xx_wdt.o" ".\hex\rtc.o" ".\hex\spi.o" ".\hex\uart.o" ".\hex\wswd.o" ".\hex\i2c0.o" ".\hex\atrh.o" ".\hex\lpc17xx_libcfg_default.o" ".\hex\anomometer.o" ".\hex\systick.o" ".\hex\bod.o" ".\hex\mmc_176x_ssp.o" ".\hex\log.o" ".\hex\main.o" ".\hex\ff.o" ".\hex\ccsbcs.o" ".\hex\syscall.o" ".\hex\unicode.o" --strict --scatter ".\HEX\SKYSENSE-4G_MAHAVEDH.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Lst\SKYSENSE-4G_MAHAVEDH.map" -o ".\HEX\SKYSENSE-4G_MAHAVEDH.axf"

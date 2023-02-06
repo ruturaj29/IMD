@@ -1,0 +1,803 @@
+
+/******************************/
+	Current Firmware Updates
+	Date: 06/03/2018
+/******************************/
+
+1. Code (Sensor PMS7003) updated with the latest firmware of SDS011 
+2. Packets sending to the AQM portal. (Pune, AlphaSense_C)
+3. Packets  which are not sent will save in pendind log.
+//4. Packets saving in Plog and Slog in a proper format with no errors
+
+
+/******************************/
+	Current Firmware Updates
+	Date: 2/20/2018
+/******************************/
+
+1. Reading sensor PMS7003 
+
+
+/******************************/
+	Current Firmware Updates
+	Date: 6/26/2018
+/******************************/
+
+1. Quectel commnds flow working - Activate and deactivate GPRS with 15 minutes interval sample data sending to portal
+2. Network time of Module updating the MCU internal RTC for every power up of the MCU 
+
+Issues:
+a. Sd card pending log issues.
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/2/2018
+/******************************/
+
+1. External interrupt for lcd scrolling
+2. Test log on holding the push button (external interrupt)
+
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/4/2018
+/******************************/
+
+1. Basic test code of watch dog timer interfaced.
+2. tested with 5 minutes of watch dog timer.
+3. System reset done upon timeout watch dog
+
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/4/2018
+/******************************/
+ 
+1. RTC CCR ccounter enable register is shifted to RTC_Init() function from RTC_Start()
+2. Only RTC interrupt is enable in RTC_Start() function.
+3. External interrupt flags cleared after a minute for resetting the screen to show PM2.5 & PM10 parameetrs 
+4. Log interval and Send interval variable is added, for logging to sdc card and sending to server.
+
+ /******************************/
+	Current Firmware Updates
+	Date: 7/5/2018
+/******************************/
+
+1. VOdafone apn added in gprs.c file --> strcmp(Buffer_Apn,"Vodafone - Maharashtra & Goa")
+2. Clear buffers are removed from the --> SampleTestlog function
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/6/2018
+/******************************/
+
+1. vodafone apn check condition changed.
+2. RegularSavelog routine shifted before the packet sending routine
+3. APN added in display
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/8/2018
+/******************************/
+
+1. commented the save log routine inside the send interval  loop.
+2. ClearBuffer2_pms7003(); shifted before the retry pending log
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/8/2018
+/******************************/
+
+1. Files maintain in SD card --> INI, PLOG, SLOG, ERR
+2. TLOG file will generate upon the pending log not sent to server.
+3. Removed watchdog timer for testing the Firmware		(will remove the comment after testing)
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/8/2018
+/******************************/
+
+1.  Reading the cluster index and Sector index for reference abd displaying on terminal  -- File get char FAT32.c file
+2. 	Added Previous count and Current count for pending log. Closing the file after reading
+
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/9/2018
+/******************************/
+
+1. 	/* Code is tested continously retry log. 
+		Tested with contoiunously GPRS activate
+		No files are corrupting.
+		tested on 4 GB*/
+2. mulitple access working
+3. Correction added, Templog copy to pndlog is done without new line 
+
+2. Added retry loop of 10 times to close the file of sd ccard --> File_Close routine
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/10/2018
+/******************************/
+
+1. Read adc channels --> solar and battery
+2. Solar and battery lcd screen in Siwtch case
+
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/11/2018
+/******************************/
+
+1. Pending log count added - on deciding count pending log will sent to Server and temp log
+2. if((RecordCount>PreviousRecordCount) && stringIndex>35)
+3. Pending log will send up to EOF .
+4. If packet not sent - Pending log stored in Temp log
+
+/******************************/
+	Current Firmware Updates
+	Date: 7/12/2018
+/******************************/
+
+//1. GSM POWER RESET PIN added
+//2. GLobal Variables Record count, prevoius record count
+
+ /******************************/
+ *** Revision 11 ****
+	Current Firmware Updates
+	Date: 7/12/2018
+/******************************/
+  
+
+1. Deleted Temp log related routines.
+2. Save log and pending log routines changes as in old revision routine.
+   (changed to old revision routines because of pending log and saving log not creating in new revision routines)
+
+3. This code is creating Pendinglog
+
+Issues observed -- Close the UART 1 interrupt and complate all the UART related functions before writing pr reading from sd card
+
+
+ /******************************/
+ *** Revision 12 ****
+	Current Firmware Updates
+	Date: 7/15/2018
+/******************************/
+
+1. Delays added in Every AT command for easy reading of response. (gprs.c)
+2. AppendFlag in initialized to zero in File_Open routine. (Helped in creating the files)
+3. LCD screens modified in readable format.
+3. GPRS Activate function.
+4. Function for GPRS activation removed before WHILE Loop.
+5. RTC Interruprt disabled after Interrupt generated.
+6. PrintDebub msg removed and UART0 transmit routine added for terminal view.
+
+Problems solved --> File creating is succeded after deleting the file.
+
+
+ /******************************/
+ *** Revision 13 ****
+	Current Firmware Updates
+	Date: 7/17/2018
+/******************************/
+
+1. %04s added in sprintf - to add fixed 4 digit information for PM parameters
+2. GNSS deactiavated before while loop
+3. Added substring check for APN
+4. Battery and Power volatge display in LCD with separate lines as a string
+5. Sensor reading wait time loop added, if no sensor connected or sensor reading failed --> Paramaeters will be zero
+
+/******************************/
+ *** Revision 14 ****
+	Current Firmware Updates
+	Date: 7/18/2018
+/******************************/
+
+1. AT Commands flow changed - Modem Initialization, GPRS Initialization, HTTP Post COmmand excution.
+ (as suggested by Mr. Ratan)
+
+
+/******************************/
+ *** Revision 15 ****
+	Current Firmware Updates
+	Date: 7/19/2018
+/******************************/
+
+1. Watch dog timer value changes on calulation of Module wait response
+2. retry for 10 times for modem_initialization(); 
+3. PDP activation routine is changed.
+4. if(WaitForExpectedResponse("+QNITZ: 0",1000))  added
+
+/******************************/
+ *** Revision 16 ****
+	Current Firmware Updates
+	Date: 7/21/2018
+/******************************/
+1. retry loop count is 5 for module initialization and module check initialization.
+2. Query_GPRSRegistrationStatus(); is commented in the routine --> module check initialization.
+3. Power key is implemented after the MCU boot up and inside of the retry fail loop of initialization.
+	/* No response identified from the module, then power down the module */
+4. 
+
+
+ /******************************/
+ *** Revision 17 ****
+	Current Firmware Updates
+	Date: 7/23/2018
+/******************************/
+
+1. Sensor reading -- int to str convert inside loop
+
+ /******************************/
+ *** Revision 18 ****
+	Current Firmware Updates
+	Date: 7/24/2018
+/******************************/
+
+1. Sensor reading in passive mode - Sensor runs only for 30 seconds in a minute.
+2. GPS Latitude longitude updated on the Display
+3. System works on IRC (4 MHz)
+4. Delay us instruction count is changed (changed due to IRC 4 MHz of instruction execution)
+5. POwer down command for GPRS 	module for power consumption
+6. #define SCK_Freq	1000000		  // SPI clock frequency
+7. removed Case 5 in external interrupt switch display
+8. Module Initialize (every 15 minutes) added in Sending the test log and power down the module after the test log sent.
+9. if rtc.year read from network clock is greater than 2018 then only update the Internal RTC
+
+/******************************/
+ *** Revision 19 ****
+	Current Firmware Updates
+	Date: 7/30/2018
+/******************************/
+1. Particulate matters parameters limit range PM2.5 and PM10
+2. Battery volatge check condition	for intializing the system peripherals and reading the sensor data.
+
+
+/******************************/
+ *** Revision 20 ****
+	Current Firmware Updates
+	Date: 01/08/2018
+/******************************/
+
+1. Changes in FAt32 file - Read operation  --> fatMappingTable[i].fileOpenedFlag = FALSE;
+2. Removed Duplicate file
+3. Added extra log for saving every 15 minutes packet for reference	 -- Pack.txt
+4. ascii-integer user routine added
+  
+
+/******************************/
+ *** Revision 21 ****
+	Current Firmware Updates
+	Date: 05/08/2018
+/******************************/
+
+1. New String format added --> Lat, long, Batt Voltage & Power Voltage
+2. AT+CMEE --> at command added for Error response in verbose ouput
+
+
+
+/*****************************************************************************************/
+
+ /******************************/
+ *** Vesrsion 6BE2B705 ****
+	Current Firmware Updates
+	Date: 30/10/2018
+/******************************/
+ 
+1. Sensor reading and averaging - atrh, windspeed direction, rain guage
+2. Data saving to sdcard. - interval - 1 min log, 10 min send interval, 40min pending log interval
+
+
+
+ /******************************/
+ *** Vesrsion 6BE2B769 ****
+	Current Firmware Updates
+	Date: 31/10/2018
+/******************************/
+
+1. Updated the Minimum speed value
+
+1810020201
+Year|month|project code|patch|revision
+
+ /******************************/
+ *** Vesrsion 6BF1FA0D ****
+	Current Firmware Updates
+	Date: 13/11/2018
+/******************************/
+ 1811020301
+
+ 1. sedning Test log of AWS parameters
+ 2. Pending log uncommented (previous patch with no pending log)
+ 3. CurrentSpeed1[6] added
+ 4. default error values in 1 minute save log - if no sensor reading in a minute.
+5. Sx and SM in sending interval is replaced
+
+
+ /******************************/
+ *** Vesrsion 6C013BE9 ****
+	Current Firmware Updates
+	Date: 13/11/2018
+/******************************/
+1812020201 - 	6C013BE9
+
+ Vesrion format for software in LCD
+ Format is YYMMCCRRPP
+ 	yy - Year two digits
+	MM - Month two digits
+	CC - Project number/code
+	RR - Revision // revision will have major changes and also previuos final code
+	PP - Patch	 // patch is minimal code changes observed and chaged according with the previous patches
+
+1. Battery low indication in LCD: if battery charge is less than 9.30 volts
+2. Err log - if watch dog timer reset\
+3. Retry condition is 2 for all GPRS related routines.
+4. Watch dog time feed reset condition is 13 minutes
+5. Push switch display - added/changed Firmware version in display
+6. Error log for low battery
+7. In test log cases removed uart printf functions for terminal
+8. UART3_TxString replaced with printf_DebugMsg
+9. UART3_Printf and UART3_TxString enables only if DEBUG_ENABLE is TRUE.
+10. INI.TXT files includes log, send and Pending log inetrval.
+11. ftoa_unsgined fucntion is added to convert negative decimal values fot ATRH
+12. Date and time view changed on LCD 
+13. LCD name chaged for Battery and Solar 
+
+
+ /******************************/
+ *** AWS - Davis Anemometer ***
+	Current Firmware Updates
+	Date: 14/11/2018
+/******************************/
+Project - 03  (AWS - Anemometer)
+Revision - 01
+Patch - 01 
+
+1812030101 - 	6C016295
+
+1. Retry only one time for modemCheck_initialization  ---> AT+QIACT 
+
+
+ /******************************/
+ *** AWS - Davis Anemometer ***
+	Current Firmware Updates
+	Date: 13/03/2019
+/******************************/
+
+Project - 03  (AWS - Anemometer, SHT11, RainGuage)
+Revision - 02
+Patch - 01 
+
+1903030201 -   716DEFB9
+
+1. Watch dog timer - timer reset value 35 minutes
+2. removed if condition for pending log flag - now it will check pending  if avaialble and send it to portal. Also if Temp.txt log available 
+	it will copy pending log.
+3. If first record from pending log failed, then copy all the records to Temperory log ( no again trying to send packet to portal) 
+4. 	/* Send interval variable for packet to send on this defined variable time*/
+	char sendInterval=15, logInterval=1, PendinglogInterval=45;	
+
+5. Pending log hard coded , pending log will try every hour
+6. ftoa routine call changed to ftoa_Signed for all calls
+
+
+/******************************/
+ *** AWS - Davis Anemometer ***
+	Current Firmware Updates
+	Date: 25/04/2019
+/******************************/
+
+Project - 03  (AWS - Anemometer, SHT11, RainGuage)
+Revision - 01
+Patch - 01 
+
+1905030101 -   718C73D5
+
+1. GSM module Regulator on and off controller through GPIO.	--->  ShutDownModule();
+2. Hardware revision on display as new board
+3. 
+
+
+/*
+//------------------------------------------------- <<< NEW PROJECT FIRMWARE UPDATES >>> -------------------------------------------------
+*/
+
+/**************************************************************************	
+
+* @file		FirmwareUpdates.txt  
+* @brief	SWIMS (SHT11, CUP ANEMOMETER, Raingauge)
+* @version	02
+* @patch	01
+* @date		01/10/2019
+* @author	vENKAT RAMANA MADISHETTY
+
+****************************************************************************
+
+Project - 03  
+Revision - 02
+Patch - 01 
+
+1910030201 - 	71D8BF79
+
+ Version format for software in LCD display
+ Format is YYMMCCRRPP
+ 	yy - Year two digits
+	MM - Month two digits
+	CC - Project number/code
+	RR - Revision // revision will have major changes and also previuos final code
+	PP - Patch	 // patch is minimal code changes observed and chaged according with the previous patches
+
+1. test log interval retry continously, due to i=0 in function void sampleTestlog() --> commented line i=0;
+2. modem_initialization() --> APN = "not found"; -- if sim communication, then show not found in APN (previuosly showing garbage)
+3. Added --
+		strcpy(latitude_buffer,"0");
+		strcpy(longitude_buffer,"0");
+		strcpy(Satellites_In_View,"0");
+		strcpy(altitude_buffer,"0");
+		strcpy(SignalQuality_BER,"99,9"); 
+4. FatFs file system replaced with ChanFs
+5. Signal strength values 28,0, writes only 28. STRTOK is added for signal quality.
+6. Unwanted command sequence for failed command is removed with return states.
+7. Buffer's allocated for packet, test and error with 512 bytes.
+8. While loop still AT command responce --> communication with GSM and board uart
+9. RETRUN STATES used in function PACKOFF log 
+10. IMEI retry 5 times 
+11. Watch dog timer iniialized imedaitely after systeminitialization.
+12. watch dog timer is 10 minutes. 
+10. modemCheck_initialization() --> function retry 2 times for GPRS activation.
+
+11. PackOffLog() --> if else condition changed.
+12. retrylog() -->  Delete pending if atleast one packet read from the SD card, otherwise dont the delete the SD card Pending.
+13. Added, Sending data to the portal only above 10.00 Volts battery --> if(volt0 > 1.55)
+14. WDT Timer reset inside the retrylog() function --> it helps in sending large pending logs without WDT timeOut
+15. Low battery indication is 9.45
+16. Disable every interrupts, before sending the data to the portal.
+
+
+
+		/***************************************************************
+		
+		* @file		FirmwareUpdates.txt  
+		* @brief	4G - MAHAVEDH (HDC1080, ULTRA SONIC, Raingauge )
+		* @version	01
+		* @patch	01
+		* @date		18/02/2020
+		* @author	vENKAT RAMANA MADISHETTY
+		* @project	11
+		
+		****************************************************************/
+POST URL - MAHAVEDH
+Date: 18/02/2019
+
+Project - 11  
+Revision - 01
+Patch - 01
+
+2002110101 - 7755C695
+
+
+1. GPRS communication on 4G
+2. Removed unwanted delays in AT command execution. 
+3. In Wait_Till_SimModule_Communication function --> else if condition for +QINISTAT: 3 & +QINISTAT: 7
+4. In ShutDownModule function --> GSM_RESET set to LOW
+5. In RestartModule function --> GSM_RESET set to HIGH
+6. Packet Format changed to Mahavedh.
+7. In HTTP_Post() --> After connect 1st wait for OK response and then wait for ",200" 
+8. In PackOffLog() --> Add delay after HTTP_SetURL
+9. condition for QHTTPPOST in HTTPPOST funtion
+10. Added - wait for expected 200 funciton
+11. RETRY FOR LAT & LONG
+
+Added later
+
+12. APN added for JIO operator
+13. added coninues reading and dispalying Wind and ATRH values in SWiTCH case Display function
+ 
+ 
+
+/************************************************************************
+*                     NEW PCB TESTING 4G MAHAVEDH                       *
+*************************************************************************/
+
+DATE: 01- MARCH -2021
+HW: SKYSENSE TECH ST - 0101
+
+Project - 01 
+Revision - 01
+Patch - 01 
+
+2103010101 - 	7D596335
+
+1. SLEEP MODE (POWER ON / POWER OFF )
+2. SENSORS: ATRH ,RAIN, ULTRASONIC,(ANOMOMETER not use )
+3. UART 1 FOR GSM MODULE IS SET TO 115200 
+4. MAIN.C GPRS.C UART.C ANOMOMETER.C SYSTICK,C
+5. RTC calibration
+6. watch dog timer set to 3 min
+7. getclock function  update RTC  change -- use const pointer to update time
+8. LCD Scroll time reduce
+9. AT+CCCLK?  command is call after  register with network.
+             -- update RTC when year is > 2021
+10. changes in APN -- vodafone m2misafe
+                  -- jio 4G operator to Jio
+				  -- airtel airteliot.com
+11.	signal strength RSSI value in dbm are remove.
+12. LCD parameter  show NA is sensor not connected
+13.  on LCD value show .00 that are change to 0.00 in convert.c 
+
+*******************************************************************************
+
+1. GPS coordinate takes 10 mins to display so it is added in 10 min interval
+2. APN checks in switch case.
+3. convert.c changes for 0.0 and for <1 (0.25,0.50,0.75)
+4. GPS coordinates takes at 12 PM if it is not taken it will try for next hour
+5. Brown out function added
+6. test packet changes for NA
+7. LAT LONG time change
+
+
+DATE: 11- MARCH -2021
+HW: SKYSENSE TECH ST - 0101
+
+Project - 01 
+Revision - 01
+Patch - 02 
+
+2103010102 - 	7D596336
+
+1. update time at 12 PM every day. if connected to network.
+2. final code to relese for production.
+
+
+
+DATE 12- MARCH 2021
+HW: SKYSENSE TECH ST - 0101
+
+Project - 01 
+Revision - 01
+Patch - 03
+
+2103010103 -  7D596337
+
+3. Removed time update with RTC calibration.
+4. Every hour if GPRS SYNCRONIZED, RTC time will be updated with cclk
+5. HTTP POST changes -- Major changes for Ok & ,200
+6. Debug print cahnges for Display and console print for SLEEP & WAKE Modem
+7. to do signal quality disply.
+8. todo error codes. 
+
+DATE 27- MARCH 2021
+HW: SKYSENSE TECH ST - 0101
+
+Project - 01 
+Revision - 01
+Patch - 04
+
+2103010104 -  7D596338
+
+1. in Retry log function uncomment the f_close(&fdst);
+
+
+DATE 30 - MARCH 2021
+HW: SKYSENSE TECH ST - 0101
+
+Project - 01 
+Revision - 01
+Patch - 05
+
+2103010105 -  7D596339
+
+1. packet send at evry 10 min interval.
+   packet creat and send to portal,--> if failed to send then put in plog.
+2. for 714 DNS error, --> GSM module shutdown and restart and then try to send packet.
+3. if packet sending failed by any other error than 714,--> error code 702 is generate.
+4. while sending test packet if uploding fails error code is shown on display.
+5. FatFs and Sdcard.c file changes.
+6. Uart.c and Uart.h file changes,use console_log function.
+   Uart2Printf() --> consol_log() in All files.
+7. GPRS.c changes for error msg showing on Disply (GSM commn error , GPRS conn error,[Error]).
+8. Before going to sleep Deactivate PDP context and After Weakup Activate PDP context.
+   above changes done for 714 error and all other error 702,703,704,716,719 in Sleep Mode impelementation.
+9. Uart interrupt is enabel and Disable,  before and after the sleep mode.
+10.WDT and BOD changes for new FatFs system(De-initialize SPI).
+11.In Convert.c the function ascii_integer is changes for "10.50" --> 10; [before:"10.50" --> 1050];   
+
+
+DATE 06 - april 2021
+HW: SKYSENSE TECH ST - 0101
+
+Project - 01 
+Revision - 01
+Patch - 06
+
+2104010106 -  7D68A57A
+
+1. Packet sending at every 10 mint and also 6 packet are send at hourly by changing INI file.
+2. Update config file through SMS 
+3. Display INI containt on LCD
+4. GSM Regulator on/off function change.
+5. remove master number
+
+DATE 08 - april 2021
+HW: SKYSENSE TECH ST - 0101
+
+Project - 01 
+Revision - 01
+Patch - 07
+
+
+2104010107 -  7D68A57B
+1. GSM Regulator Power on/ off
+2. remove Sleep mode implementation.
+3. Mster number is removed.
+
+ 
+----------------------------------------------------
+DATE 15 - april 2021
+HW: SKYSENSE TECH ST - 0101
+-----------------------------------------------------
+Project - 01 
+Revision - 01
+Patch - 08
+
+2104010108 -  7D68A57C
+
+1. Main.c Change for Sleep mode
+
+Project - 01 
+Revision - 01
+Patch - 09
+
+2104010109 -  7D68A57D
+
+1. Main.c Change for POWER mode
+
+
+
+---------------------------------------------------------
+date: 16th Apr 2021,
+Modifications after second visit of shivajinagar batch 4
+---------------------------------------------------------
+2104010110 - 	 7D68A57E
+
+2. Modified the mmc_176x_Ssp.c file with systick timer --> disk_timerproc() function for 
+	 sdcard	timeout	(when sd card corrupts)
+
+3. Removed the wdt and bod if condition after mahavedh screen name main.c
+4. signal strength loop retry 5	 for only poor & not detected signal quality
+5. mmc_176x_ssp.h sd card detect pin set --> #define	MMC_CD		((FIO2PIN1 & _BV(3)))
+6. systick start & stop for sd card timeout (create, write, retry, readconfig, smsUpdateConfig)
+7. if Plog creactes then set the flag.
+			[ if flag --> set , then retylog execute.
+			  if flag --> not set, then retrylog not execute. ]
+8. Signaal strength is take after network registration. 
+   [ it's Observed that when +CREG: 0,2 or +CREG: 0,0 --> signal strength is +CSQ: 99,99 ]
+	 [ and when +CREG: 0,1 or +CREG: 0,5 --> signal strength is +CSQ: 19,99 ]
+9. Writelog(); create_folder(); create_file();	sd_append_file();
+		[ are chenges to --> bool function from void function ]
+		[ if packetlog failed to write in SD card, then packet Send at realtime ]
+
+
+---------------------------------------------------------
+date: 25th Apr 2021,
+Modifications after second visit of shivajinagar batch 4
+---------------------------------------------------------
+
+1. ALL .c files are modifide for inient and proper alligenment.
+2. log.c time and date function call when pdp activate succesfuly.[ line number 209 ]
+ 
+ 			if (responseStatus) {						 changes to		        if (responseStatus || returnStatus) {
+ 					//update date and time()     --------->    					  // update date and time()
+ 			} 																										}
+  
+	 its observe that some device has time back RTC due to faild to send packet on server and PDP not activation.
+	 means at some times QIACT is done properly but packet send fails due to CMEE error 702 or 714 then above loop
+	 not execute.
+
+	 in 1 hour --> nearly 1 mit RTC time back.
+
+
+---------------------------------------------------------
+date: 4th may 2021,
+Modifications after First visit of shivajinagar batch 5
+---------------------------------------------------------
+
+Project - 01 
+Revision - 01
+Patch - 12
+
+2105010112 - 	 7D77E7C0
+
+1. _ErrorLogBuffer and _SMS_Buffer size changes to 512 from 100.
+2. APN switch case is removed. INI file is update through SMS.
+
+
+--------------------------------------------------------------------
+date: 2nd june 2021
+modification after production relese observation by field officer
+--------------------------------------------------------------------
+
+
+Project - 01 
+Revision - 01
+Patch - 16
+
+2106010116 - 	 7D872A04
+
+1. wait for SMS removed from Lcd Scrolling.
+2. in sendinglog buffer plogcreate is initialize with 1,
+   to send pendinglog if system reboots unconditionally.
+
+
+--------------------------------------------------------------------
+date: 1st july 2021
+modification after production relese observation by field officer
+--------------------------------------------------------------------
+
+Project - 01 
+Revision - 01
+Patch - 18
+
+2107010118 - 	 7D966C46 
+
+
+
+This are majore changes :
+
+3. in SD card pending log create twice (duplication of Plog observed),
+   removed if condition to avoid duplication of plog.
+4. network registration fails continuously,so that power ON/OFF GSM module.
+5. while sending packet server not respond [0,200] response,
+   MODEM_RESPONSE_TIMEOUT	or HTTP time out occure,
+	 due to this from next packet sending interval continuously +CME ERROR: 703 observed.
+	 so that gsm module power on/off done.
+
+6. if PLOG.txt source file opening faild then make plogcreat flag = 0 [plogcreat = 0 ]
+7. GSM module not wakeup from Sleep properly so power on/off the gsm module.
+
+
+
+--------------------------------------------------------------------
+date: 13TH jan 2022
+modification after production relese observation by field officer
+--------------------------------------------------------------------
+
+
+
+  Project - 01 
+Revision - 01
+Patch - 19
+
+2022011319	   M4GFRT.0.1	 (M= Mahavedh ,4G,FRT Sensor)
+
+	 1. hadale the 302 http response in gprs.c file 
+
+
+--------------------------------------------------------------------
+Date: 1 july 2022
+modification after production relese observation by field officer
+--------------------------------------------------------------------
+
+Project - 01 
+Revision - 01
+Patch - 20
+
+2022070120	   M4GFRT.0.8	 (M= Mahavedh ,4G,FRT Sensor)
+
+	 1.Assign new colum in current packet format in mahavedh (22 colum) for cummuletive rain .varible name is _xyz
+	 2.cummlative rain opertion, add new two function in current firmware:-
+	                                                                         1)rtc_1call();
+	                                                                         2)rtc_2call(); 
+--------------------------------------------------------------------
+Date: 12 jan 2023
+modification after production relese observation by field officer
+--------------------------------------------------------------------
+
+Project - 01 
+Revision - 01
+Patch - 21
+
+2022070120	   M4GFZRT.0.9	 (M= Mahavedh ,4G,FRT + ZATA Sensor)
+
+	 1.Command for Ultrasonic read changed from 0R1 to 0R0 Which is compatible
+	 	 for both FRT and ZRT(ZATA) UltraSonic Wind Sensor 

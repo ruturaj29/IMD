@@ -1,0 +1,47 @@
+*** Creating Trace Output File '.\HEX\SKYSENSE-4G_MAHAVEDH.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\hex\startup_lpc17xx.o"'
+### List of Objects: adding '".\hex\system_lpc17xx.o"'
+### List of Objects: adding '".\hex\core_cm3.o"'
+### List of Objects: adding '".\hex\adc.o"'
+### List of Objects: adding '".\hex\convert.o"'
+### List of Objects: adding '".\hex\delay.o"'
+### List of Objects: adding '".\hex\extintr.o"'
+### List of Objects: adding '".\hex\gpio.o"'
+### List of Objects: adding '".\hex\gprs.o"'
+### List of Objects: adding '".\hex\lcd.o"'
+### List of Objects: adding '".\hex\lpc17xx_clkpwr.o"'
+### List of Objects: adding '".\hex\lpc17xx_wdt.o"'
+### List of Objects: adding '".\hex\rtc.o"'
+### List of Objects: adding '".\hex\spi.o"'
+### List of Objects: adding '".\hex\uart.o"'
+### List of Objects: adding '".\hex\wswd.o"'
+### List of Objects: adding '".\hex\i2c0.o"'
+### List of Objects: adding '".\hex\atrh.o"'
+### List of Objects: adding '".\hex\lpc17xx_libcfg_default.o"'
+### List of Objects: adding '".\hex\anomometer.o"'
+### List of Objects: adding '".\hex\systick.o"'
+### List of Objects: adding '".\hex\bod.o"'
+### List of Objects: adding '".\hex\mmc_176x_ssp.o"'
+### List of Objects: adding '".\hex\log.o"'
+### List of Objects: adding '".\hex\main.o"'
+### List of Objects: adding '".\hex\ff.o"'
+### List of Objects: adding '".\hex\ccsbcs.o"'
+### List of Objects: adding '".\hex\syscall.o"'
+### List of Objects: adding '".\hex\unicode.o"'
+### ADS-LD Command completed:
+--device DARMP1 ".\hex\startup_lpc17xx.o" ".\hex\system_lpc17xx.o" ".\hex\core_cm3.o" ".\hex\adc.o" ".\hex\convert.o" ".\hex\delay.o" ".\hex\extintr.o" ".\hex\gpio.o" ".\hex\gprs.o" ".\hex\lcd.o" ".\hex\lpc17xx_clkpwr.o" ".\hex\lpc17xx_wdt.o" ".\hex\rtc.o" ".\hex\spi.o" ".\hex\uart.o" ".\hex\wswd.o" ".\hex\i2c0.o" ".\hex\atrh.o" ".\hex\lpc17xx_libcfg_default.o" ".\hex\anomometer.o" ".\hex\systick.o" ".\hex\bod.o" ".\hex\mmc_176x_ssp.o" ".\hex\log.o" ".\hex\main.o" ".\hex\ff.o" ".\hex\ccsbcs.o" ".\hex\syscall.o" ".\hex\unicode.o" --strict --scatter ".\HEX\SKYSENSE-4G_MAHAVEDH.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Lst\SKYSENSE-4G_MAHAVEDH.map" -o ".\HEX\SKYSENSE-4G_MAHAVEDH.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\HEX\SKYSENSE-4G_MAHAVEDH.axf'
+### ADS-LD Command File: '.\HEX\SKYSENSE-4G_MAHAVEDH.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\HEX\SKYSENSE-4G_MAHAVEDH.lnp', Handle=0x000006E4
+### Writing '.lnp' file
+### ADS-LD Command file '.\HEX\SKYSENSE-4G_MAHAVEDH.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

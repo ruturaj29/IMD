@@ -223,10 +223,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>5</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>519</TopLine>
+      <CurrentLine>519</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Core\CM3\DeviceSupport\NXP\LPC17xx\system_LPC17xx.c</PathWithFileName>
       <FilenameWithoutPath>system_LPC17xx.c</FilenameWithoutPath>
@@ -485,7 +485,7 @@
       <ColumnNumber>68</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>23</TopLine>
-      <CurrentLine>40</CurrentLine>
+      <CurrentLine>23</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\DRIVERS\source\anomometer.c</PathWithFileName>
       <FilenameWithoutPath>anomometer.c</FilenameWithoutPath>
@@ -559,10 +559,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>60</ColumnNumber>
+      <ColumnNumber>34</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>112</TopLine>
-      <CurrentLine>112</CurrentLine>
+      <TopLine>392</TopLine>
+      <CurrentLine>410</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -2051,8 +2051,20 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>4</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
+        <Doc>
+          <Name>.\main.c</Name>
+          <ColumnNumber>4</ColumnNumber>
+          <TopLine>404</TopLine>
+          <CurrentLine>419</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>..\Core\CM3\DeviceSupport\NXP\LPC17xx\system_LPC17xx.c</Name>
+          <ColumnNumber>5</ColumnNumber>
+          <TopLine>519</TopLine>
+          <CurrentLine>519</CurrentLine>
+        </Doc>
         <Doc>
           <Name>.\Firmware Updates.txt</Name>
           <ColumnNumber>25</ColumnNumber>
@@ -2078,12 +2090,6 @@
           <CurrentLine>1</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\main.c</Name>
-          <ColumnNumber>9</ColumnNumber>
-          <TopLine>376</TopLine>
-          <CurrentLine>388</CurrentLine>
-        </Doc>
-        <Doc>
           <Name>..\DRIVERS\source\Log.c</Name>
           <ColumnNumber>27</ColumnNumber>
           <TopLine>38</TopLine>
@@ -2093,7 +2099,7 @@
           <Name>..\DRIVERS\source\anomometer.c</Name>
           <ColumnNumber>68</ColumnNumber>
           <TopLine>23</TopLine>
-          <CurrentLine>40</CurrentLine>
+          <CurrentLine>23</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\DRIVERS\source\i2c0.c</Name>
